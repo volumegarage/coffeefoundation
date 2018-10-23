@@ -1,0 +1,87 @@
+{{!-- This is the base layout for your project, and will be used on every page unless specified. --}}
+
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foundation6 for Sites</title>
+    <link rel="stylesheet" href="{{root}}assets/css/app.css">
+  </head>
+  <body>
+    <header class="site-header {{title}}">
+      <div class="container">
+        <div class="header-content">
+          <div class="top-section">
+            <div class="logo">
+              <img src="assets/img/logo.svg" alt="New White Coffee Shop Logo test">
+            </div><!-- Close Logo -->
+
+            <div class="menus">
+              <nav class="social-menu">
+                <a href="http://www.facebook.com"><span class="hide">Facebook</span></a>
+                <a href="http://www.twitter.com"><span class="hide">Twitter</span></a>
+                <a href="http://www.instagram.com"><span class="hide">Instagram</span></a>
+                <a href="http://www.youtube.com"><span class="hide">You Tube</span></a>
+
+              </nav>
+
+              <div class="title-bar" data-responsive-toggle="main-nav" data-hide-for="medium">
+                <button class="menu-icon" type="button" data-toggle="main-nav"></button>
+                <div class="title-bar-title">Menu</div>
+
+              </div>
+
+              <ul id="main-nav" class="main-navigation" data-animate="menu-in menu-out">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+                <li><a href="process.html">Process</a></li>
+                <li><a href="#">Menu</a></li>
+                <li><a href="#">Gallery</a></li>
+                <li><a href="#">Contact Us</a></li>
+
+              </ul>
+
+            </div>
+
+          </div><!-- Close Top Section -->
+          <div class="bottom-section">
+            <h1 class="slogan">{{slogan}}</h1>
+          </div><!-- Close Bottom Section -->
+
+        </div><!-- Close header-content -->
+      </div><!-- Close .container-->
+    </header>
+
+{{> body}}
+
+    <script src="{{root}}assets/js/app.js"></script>
+  </body>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-box">
+          <h3>Locations</h3>
+          <p>44 Shirley Avenue</p>
+          <p>West Chicago, IL 60185</p>
+        </div>
+
+        <div class="footer-box">
+          <h3>Reservations</h3>
+          <p>Call Us:</p>
+          <p>202-111-2345</p>
+        </div>
+
+        <div class="footer-box">
+          <h3>Opening Table</h3>
+          <p>Mon - Thu 11:00 - 22:00</p>
+          <p>Fri - Sat 09:00 - 24:00</p>
+          <p>Closed on Sunday</p>
+        </div>
+      </div><!-- Footer Content -->
+    </div><!-- Container -->
+    <p class="copyright">All Rights Reserved The Coffee Shop 2017.</p>
+  </footer>
+</html>

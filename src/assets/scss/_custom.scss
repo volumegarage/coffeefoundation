@@ -1,0 +1,353 @@
+// Fade effect mixin
+@mixin faded_black() {
+ background: linear-gradient(to bottom, rgba(0,0,0,.7) 20%, rgba(0,0,0,.3) );
+}
+
+@mixin background_image($page) {
+
+  background-image: url(../img/featured/small/#{$page}.jpg);
+
+  @include breakpoint(medium) {
+    background-image: url(../img/featured/medium/#{$page}.jpg);
+  }
+
+  @include breakpoint(large) {
+    background-image: url(../img/featured/large/#{$page}.jpg);
+  }
+
+}
+
+@mixin fa-icon {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  vertical-align: -.125em;
+}
+
+// Bellfair Font
+$bellefair: 'Bellfair', serif;
+
+.container {
+  @include xy-grid-container();
+}
+
+// Styling for all content
+.main-content {
+  background-color: $white;
+  padding: rem-calc(5);
+  @include breakpoint(medium) {
+    margin-top: rem-calc(-120);
+    position: relative;
+    padding: rem-calc(50 80);
+  }
+}
+
+.site-header {
+
+  background-size: cover;
+  height: 100vh;
+  position: relative;
+  &.home {
+    @include background_image(home);
+  }
+  &.about {
+    @include background_image(about);
+  }
+
+  &.process {
+    @include background_image(process);
+  }
+
+
+  .header-content {
+    padding-top: rem-calc(30);
+    // add mixin
+    // @include padding(2)
+
+    .top-section {
+      @include xy-grid();
+      @include flex-align(center, top);
+      position: relative;
+      z-index: 1;
+
+      .logo {
+        @include xy-cell(6);
+        @include flex-align(center, middle);
+        @include breakpoint(medium) {
+        @include xy-cell(25%);
+      }
+      img {
+        @include flex-align
+      }
+      }
+
+    }
+    .bottom-section {
+      @include margin(1); // This setting for small screens
+
+      @include breakpoint(medium) { // This setting for medium an above.
+        height: rem-calc(230);
+        @include flex();
+        @include flex-align(center,bottom);
+      }
+
+      .slogan {
+        color: $white;
+        position: relative;
+        text-align: center;
+        z-index: 1;
+        @include font-bold(900);
+        @include text-transform(uppercase);
+      }
+    }
+  }
+  &:after {
+    @include faded_black();
+    @include position(absolute, 0,0,0,0);
+    content: '';
+    @include box(100%, 100%);
+    min-height: 600px;
+  }
+}
+
+  .menus {
+    @include xy-cell();
+    @include breakpoint(medium) {
+    @include xy-cell(75%);
+  }
+  // Social Menu
+  .social-menu {
+      @include menu-base();
+      @include flex-align(center, middle);
+      @include breakpoint(medium) {
+      @include flex-align(right, middle);
+    }
+
+
+    a {
+      @include fa-icon;
+      @extend .fab;
+      &:before {
+        font-size: rem-cal(30);
+        color: $white;
+      }
+
+
+    &[href*="facebook.com"]::before {
+      content: fa-content($fa-var-facebook);
+      }
+
+    &[href*="twitter.com"]::before {
+      content: fa-content($fa-var-twitter);
+      }
+
+    &[href*="instagram.com"]::before {
+      content: fa-content($fa-var-instagram);
+      }
+
+    &[href*="youtube.com"]::before {
+      content: fa-content($fa-var-youtube);
+      }
+    }
+  }
+
+  .title-bar {
+    background-color: darken($primary-color, 10);
+  }
+
+  // Main main-navigation for Interior Pages
+  .main-navigation {
+    @include menu-base();
+    @include flex-align(right, middle);
+    @include breakpoint(small only) {
+      background-color: $primary-color;
+    }
+
+    li {
+      @include breakpoint(small only) {
+        width: 100%;
+        text-align: center;
+      }
+      a {
+        @include text-transform(uppercase);
+        @include font-bold(700);
+        font-size: rem-calc(16);
+
+        &:hover {
+          color: $secondary-color;
+        }
+      }
+    }
+  }
+}
+
+// ANIMATION MENUS
+.menu-in {
+  @include mui-zoom(in, .1, 1);
+}
+
+.menu-out {
+  @include mui-zoom(out, 1, .1, true, .5s, ease)
+}
+
+// Footer styles
+
+.site-footer {
+  background-color: $primary-color;
+  .container {
+    background-color: white;
+    @include padding(2,2,4,2);
+    .footer-content {
+      @include xy-grid();
+      .footer-box {
+        @include xy-cell();
+        @include breakpoint(small only) {
+          margin-bottom: rem-calc(10);
+          h3 {
+            margin-bottom: rem-calc(0);
+          }
+        }
+        @include breakpoint(medium) {
+          @include xy-cell(4);
+        }
+        text-align: center;
+        h3 {
+          color: $secondary-color;
+          font-family: $bellefair;
+          @include text-transform(uppercase);
+        }
+        p {
+          margin: 0;
+        }
+      }
+    }
+  }
+  .copyright {
+    margin: 0;
+    color: $white;
+    text-align: center;
+    font-size: rem-calc(18);
+    @include padding(1, null, 1, null);
+    @include font-bold(900);
+  }
+}
+
+.heading-title {
+  color: $secondary-color;
+  text-align: center;
+  @include font-bold(900);
+  @include text-transform(uppercase);
+  font-size: rem-calc(18);
+  margin-bottom: rem-calc(100);
+  margin-top: rem-calc(40);
+  width: 100%;
+  span {
+    color: $primary-color;
+    font-size: rem-calc(38);
+    display: table;
+    margin:0 auto;
+  }
+  &:after {
+    content: '';
+    @include box(rem-calc(80), rem-calc(80));
+    background-image: url(../img/coffee.svg);
+    background-size: rem-calc(80);
+    background-repeat: no-repeat;
+    @include horizontal-center();
+    margin-top: rem-calc(-15);
+  }
+}
+
+/** INTERNAL Pages **/
+
+/** ABOUT US Pages **/
+main.page-about {
+  @include xy-grid();
+  @include flex-align(justify,top);
+
+  .image {
+    @include xy-cell();
+    @include breakpoint(medium) {
+      @include xy-cell(48%);
+      margin-right: rem-calc(10);
+    }
+
+    .image-effect {
+      @include rotate(-10);
+      border: rem-calc(10) solid $white;
+      @include shadow();
+      @include breakpoint(small only) {
+        margin-bottom: rem-calc(70);
+        width: 90%;
+      }
+    }
+  }
+  .page-content {
+    @include xy-cell();
+    margin-left: rem-calc(10);
+
+    @include breakpoint(medium) {
+      @include xy-cell(50%);
+    }
+
+    p {
+      font-size: rem-calc(16);
+      line-height: rem-calc(40);
+    }
+
+    blockquote {
+      font-size: rem-calc(30);
+    }
+  }
+}
+
+
+/** PROCESS Pages **/
+
+.page-process {
+  .process-container {
+    @include xy-grid();
+    .process-item {
+      @include xy-gutters($gutter-position: bottom);
+      @include xy-cell();
+      @include breakpoint(medium) {
+        @include xy-cell(1 of 2);
+      }
+    }
+    @include breakpoint(medium) {
+      @include odd() {
+        .process-image {
+          order: 2;
+        }
+        .process-content {
+          order: 1;
+        }
+      }
+    }
+    .process-content {
+      h3 {
+        color: $primary-color;
+        @include margin(1);
+        @include text-transform(uppercase);
+        @include font-bold(900);
+        &:after {
+          width: rem-calc(200);
+          height: rem-calc(2);
+          background-color: $secondary-color;
+          content: '';
+          display: block;
+          margin-top: rem-calc(10);
+        }
+      }
+      p {
+        font-size: rem-calc(18);
+        line-height: rem-calc(38);
+        margin-top: rem-calc(30);
+      }
+    }
+  }
+}
