@@ -62,6 +62,10 @@ $bellefair: 'Bellfair', serif;
     @include background_image(process);
   }
 
+  &.menu {
+    @include background_image(menu);
+  }
+
 
   .header-content {
     padding-top: rem-calc(30);
@@ -350,4 +354,123 @@ main.page-about {
       }
     }
   }
+}
+
+/** MENU Pages **/
+
+.page-menu {
+  @include xy-grid();
+  padding-bottom: 0;
+  .menu-description {
+    @include xy-cell();
+    @include breakpoint(large) {
+      @include xy-cell(5);
+    }
+
+    p {
+      text-align: center;
+      line-height: rem-calc(50);
+    }
+  }
+  .menu-image {
+    @include xy-cell();
+    @include breakpoint(large) {
+      @include xy-cell(7);
+    }
+
+    @include flex-align(center, bottom);
+    @include flex();
+  }
+}
+
+
+/** MENU Section Styles **/
+
+.our-menu {
+  background-image: url(../img/menu.jpg);
+  @include padding(3, null, 3, null);
+  position: relative;
+  background-position: center center;
+  background-attachment: scroll;
+  @include breakpoint(large) {
+    background-size: cover;
+    background-attachment: fixed;
+  }
+
+  h2 {
+    color: $white;
+    @include font-bold(900);
+    @include text-transform(uppercase);
+    text-align: center;
+    font-size: rem-calc(20);
+    margin-bottom: rem-calc(40);
+    span {
+      @include display(table);
+      margin: 0 auto;
+      font-size: rem-calc(50);
+    }
+  }
+  &:after {
+    content: '';
+    @include position(absolute, 0,0,0,0)
+    background-color: rgba(46, 23, 15, .86);
+  }
+
+  .container {
+    position: relative;
+    z-index: 10;
+  }
+  .menu-list {
+    @include xy-grid();
+    color: $white;
+    // First div selector
+    > div {
+      @include xy-cell();
+      @include breakpoint(medium) {
+        @include xy-cell(6);
+      }
+      h3 {
+        @include text-transform(uppercase);
+        @include font-bold(900);
+        text-align: center;
+        margin-bottom: rem-calc(40);
+      }
+
+    }
+  }
+}
+
+// Product List styles
+.product-list {
+  list-style: none;
+  margin: 0;
+  li {
+    margin-bottom: rem-calc(20);
+    @include flex();
+    @include xy-grid();
+    .product {
+      @include xy-cell(8);
+      p.name {
+        @include text-transform(uppercase);
+        @include font-bold(900);
+        font-size: rem-calc(18);
+      }
+      p.description {
+        color: $secondary-color;
+        font-size: rem-calc(16);
+      }
+    }
+    .price {
+      @include xy-cell(4);
+      p {
+        text-align: right;
+        font-size: rem-calc(30);
+        @include font-bold(900);
+      }
+    }
+    p {
+      margin: 0;
+    }
+    }
+
 }
