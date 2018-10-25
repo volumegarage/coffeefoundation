@@ -66,6 +66,10 @@ $bellefair: 'Bellfair', serif;
     @include background_image(menu);
   }
 
+  &.gallery {
+    @include background_image(gallery);
+  }
+
 
   .header-content {
     padding-top: rem-calc(30);
@@ -473,4 +477,73 @@ main.page-about {
     }
     }
 
+}
+
+
+// Gallery Top styles
+
+.gallery-top {
+  margin-bottom: rem-calc(20);
+  @include breakpoint(medium) {
+    margin-bottom: rem-calc(5);
+  }
+  @include xy-grid();
+
+  .left-content {
+    @include xy-cell(1 of 4);
+    @include breakpoint(small only) {
+      @include xy-cell(4 of 9);
+    }
+  }
+
+  .right-content {
+    @include xy-cell(3 of 4);
+    @include breakpoint(small only) {
+      @include xy-cell(5 of 9);
+    }
+
+    .right-container {
+      @include xy-grid();
+
+      .gallery-item {
+        @include xy-cell(4);
+        @include breakpoint(small only) {
+          @include xy-cell(6);
+        }
+        @include xy-gutters(30, padding, bottom);
+        &.two-cols {
+          @include xy-cell(8);
+          @include breakpoint(small only) {
+            @include xy-cell();
+          }
+        }
+      }
+    }
+  }
+}
+
+.gallery-bottom {
+  @include xy-grid();
+// First level selector of children
+  > .gallery-item {
+    @include xy-cell(25%);
+      @include xy-grid-collapse();
+    @include xy-gutters(18, margin, left right);
+    &.two-cols {
+      @include xy-cell(50%);
+      @include xy-gutters(15, padding, right);
+    }
+
+  }
+  .right-content {
+    @include xy-cell(25%);
+    @include xy-grid-collapse();
+    @include xy-gutters(30, padding, left bottom right);
+    @include breakpoint(small only) {
+      @include xy-gutters();
+    }
+    .gallery-item {
+      margin-bottom: rem-calc(32);
+    }
+  }
 }
