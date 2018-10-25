@@ -1,0 +1,66 @@
+---
+title: contact
+slogan: Better beans, better coffee
+---
+
+<div class="container">
+  <main class="main-content page-{{title}}">
+    <h2 class="heading-title">Reserve your <span>table</span></h2>
+
+    <div class="reservation-form">
+      <form method="post" id="contact-form">
+        <!-- sending form via ajax to use id.-->
+        <div class="field-container">
+          <label for="">
+            Your name:
+            <input type="text" placeholder="Full Name"  name="name">
+          </label>
+        </div>
+        <div class="field-container">
+
+          <label for="">
+            Phone or email:
+            <input type="text" placeholder="Phone or Email Address"  name="name">
+          </label>
+        </div>
+        <div class="field-container">
+
+          <label for="for">
+            For:
+            <select name="number" id="for">
+              <option value="1">1 Person</option>
+              <option value="2">2 People</option>
+              <option value="3">3 People</option>
+              <option value="4">4 People</option>
+              <option value="5">5 People</option>
+              <option value="6">6 People</option>
+              <option value="7">7 People</option>
+              <option value="8">8 People</option>
+              <option value="9">9 People</option>
+            </select>
+          </label>
+        </div>
+        <div class="field-container">
+
+          <label for="time">
+            At:
+            <input type="time" placeholder="Eg: 10:30 AM"  name="time">
+          </label>
+        </div>
+        <div class="field-container">
+
+          <label for="when">
+            When:
+            <input type="date" placeholder=""  name="date">
+          </label>
+        </div>
+
+        <div class="field-container">
+          <input type"submit" value="Submit" class="button send_btn">
+        </div>
+
+      </div>
+    </form>
+  </div>
+</main>
+</div>
