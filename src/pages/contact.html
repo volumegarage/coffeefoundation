@@ -8,20 +8,27 @@ slogan: Better beans, better coffee
     <h2 class="heading-title">Reserve your <span>table</span></h2>
 
     <div class="reservation-form">
-      <form method="post" id="contact-form">
+      <form method="post" id="contact-form" data-abide novalidate>
         <!-- sending form via ajax to use id.-->
         <div class="field-container">
-          <label for="">
+          <label for="name">
             Your name:
-            <input type="text" placeholder="Full Name"  name="name">
+            <input type="text" placeholder="Full Name"  name="name" required>
+            <span class="form-error">
+              Error, the name field is mandatory.
+            </span>
           </label>
         </div>
         <div class="field-container">
 
-          <label for="">
-            Phone or email:
-            <input type="text" placeholder="Phone or Email Address"  name="name">
+          <label for="email">
+            Email:
+            <input type="text" placeholder="Email Address"  name="email" required pattern="email">
+            <span class="form-error">
+              Error, the Email field is mandatory.
+            </span>
           </label>
+
         </div>
         <div class="field-container">
 
@@ -51,7 +58,10 @@ slogan: Better beans, better coffee
 
           <label for="when">
             When:
-            <input type="date" placeholder=""  name="date">
+            <input type="text" id="when" placeholder="DD/MM/YYYY"  name="when" required pattern="date_month_year">
+            <span class="form-error">
+              Error, the Date Field Format is mandatory.
+            </span>
           </label>
         </div>
 
