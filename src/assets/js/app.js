@@ -23,6 +23,44 @@ window.libs = libs;
 
 $(document).foundation();
 
+// Abide Event Listeners
+$('#contact-transform')
+.on("invalid.zf.abide", function(ev,elem) {
+  swal(
+    'Oops...',
+    'Something went wrong!',
+    'error'
+  )
+})
+
+// form validation passed, form will submit if submit event not returned false
+.on("formvalid.zf.abide", function(ev,frm) {
+  var form = ($this);
+
+  $.ajax({
+    type: form.attr('method'),
+    url: form.attr('action'),
+    data: form.serialize(),
+    success: function(data) {
+      var result = data;
+      var response = JSON.parse(result);
+      console.log(response);
+      swal(
+        response.message,
+        'Thank you, ' + response.name + 'For your reservation',
+        'success'
+      );
+    }
+  })
+  // ajax post form
+})
+// to prevent form from submitting upon successful validation
+.on("submit", function(ev) {
+  ev.preventDefault();
+  console.log("Submit for form id "+ev.target.id+" intercepted");
+});
+// End of Abide Event Listeners
+
 libs.AOS.init();
 
 // SVG Injector
