@@ -3,6 +3,15 @@ import whatInput from 'what-input';
 
 window.$ = $;
 
+// Sweet Alert
+import swal from 'sweetalert2/dist/sweetalert2.all.min.js'
+
+swal(
+  'Good Job!',
+  'You added sweet alert',
+  'success'
+);
+
 import Foundation from 'foundation-sites';
 // If you want to pick and choose which modules to include, comment out the above and uncomment
 // the line below
