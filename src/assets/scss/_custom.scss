@@ -51,6 +51,11 @@ $bellefair: 'Bellfair', serif;
   background-size: cover;
   height: 100vh;
   position: relative;
+  background-attachment: scroll;
+  @include breakpoint(large) {
+    background-attachment: fixed;
+  }
+  background-attachment: fixed;
   &.home {
     @include background_image(home);
   }
@@ -204,6 +209,53 @@ $bellefair: 'Bellfair', serif;
 
 .menu-out {
   @include mui-zoom(out, 1, .1, true, .5s, ease)
+}
+
+// INDEX PAGES - About Us
+
+.about-us-homepage {
+  @include breakpoint(medium) {
+    @include xy-cell(80%);
+    @include xy-cell-offset(10%);
+  }
+
+  p {
+    text-align: center;
+    line-height: rem-calc(40);
+    font-size: rem-calc(18);
+  }
+}
+
+.category-icons {
+  @include xy-grid();
+  .icon {
+    @include xy-cell();
+    @include breakpoint(medium) {
+    @include xy-cell(1 of 3);
+    }
+
+    height: rem-calc(260);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: rem-calc(120%);
+    @include flex();
+    @include flex-align(center, bottom);
+    &.coffee {
+      background-image: url(../img/icon_coffee.svg);
+    }
+    &.desserts {
+      background-image: url(../img/icon_dessert.svg);
+    }
+    &.tea {
+      background-image: url(../img/icon_tea.svg);
+    }
+    h3 {
+      text-align: center;
+      font-family: $bellefair;
+      color: $primary-color;
+      font-size: rem-calc(38);
+    }
+  }
 }
 
 // Footer styles
@@ -473,6 +525,10 @@ main.page-about {
       p {
         text-align: right;
         font-size: rem-calc(30);
+
+        @include breakpoint(small only) {
+          font-size: rem-calc(26);
+        }
         @include font-bold(900);
       }
     }
@@ -589,5 +645,31 @@ main.page-about {
       font-size: rem-calc(18);
       width: 100%;
       height: auto;
+    }
+  }
+
+  // Testimonials styles
+
+  .testimonials {
+    background-color: $white;
+    padding-top: rem-calc(70);
+    padding-bottom: rem-calc(70);
+    h2 {
+      margin-top: 0;
+    }
+  }
+
+  .slide-container {
+    @include xy-grid();
+    @include flex-align(center, middle);
+    .orbit {
+      background-color: $cream;
+      @include xy-cell(10);
+      border-left: rem-calc(5) solid $primary-color;
+      li {
+        div {
+          @include padding(2, 4, 2, 4);
+        }
+      }
     }
   }
